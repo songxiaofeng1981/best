@@ -43,20 +43,15 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Download Static Site
         uses: actions/download-artifact@v2
         with:
           name: static-site
           path: downloaded-site
 
-      - name: Print File Tree
-        run: tree  
-      
-      - name: Create Directory and Extract Artifact
-        run: |
-          mkdir -p ./_site  # 创建 _site  
-          tar -xvf artifact.tar -C ./_site  
-    
       - name: Print File Tree
         run: tree  
 
