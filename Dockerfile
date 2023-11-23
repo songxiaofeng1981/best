@@ -17,6 +17,9 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && curl -sSL https://rvm.io/pkuczynski.asc | gpg --import - \
     && curl -sSL https://get.rvm.io | bash -s stable
 
+# 添加 RVM 到 PATH
+ENV PATH="/usr/local/rvm/bin:$PATH"
+
 # 激活 RVM
 RUN /bin/bash -l -c "source /usr/local/rvm/scripts/rvm"
 
