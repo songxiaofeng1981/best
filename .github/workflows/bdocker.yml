@@ -1,12 +1,8 @@
-name: Build and Push Docker Image
+name: Monthly Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - main  # 或您使用的分支名
-  pull_request:
-    branches:
-      - main  # 或您使用的分支名
+  schedule:
+    - cron: '0 0 1 * *'  # 每月的第一天午夜执行
   workflow_dispatch:
 
 jobs:
