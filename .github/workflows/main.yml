@@ -24,7 +24,7 @@ jobs:
 
       - name: Move WebP Images
         run: |
-          find ${{ github.workspace }}/images -type f -name '*.webp' -exec mv {} ${{ github.workspace }}/app/photos/original \;
+          sudo find ${{ github.workspace }}/images -type f -name '*.webp' -exec mv {} ${{ github.workspace }}/app/photos/original \;
 
 
       - name: Build Jekyll Site
