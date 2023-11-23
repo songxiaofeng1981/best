@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libreadline-dev \
     zlib1g-dev \
-    libsqlite3-dev
+    libsqlite3-dev \
+    zsh \
+    vim
 
 # 安装 RVM (Ruby Version Manager)
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
