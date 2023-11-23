@@ -9,5 +9,37 @@ if [ ! -d "$IMAGE_DIR" ]; then
     exit 1
 fi
 
-# 在这里添加您的图片处理逻辑
-# 例如，使用 Squoosh CLI 优化 $IMAGE_DIR 中的图片
+# 安装 ImageMagick (如果尚未安装)
+apt-get update && apt-get install -y imagemagick
+
+# 重命名图片并压缩
+count=1
+for file in "$IMAGE_DIR"/*.{jpg,jpeg,png}; do
+    if [[ -f $file ]]; then
+        # 重命名逻辑
+        date=$(identify -verbose "$file" | grep "exif:DateTimeOriginal:" | awk '{print $2}' | sed 's/:/-/g' | sed 's/ //g')
+        if [ ! -z "$date" ]; then
+            formattedDate=$(date -d "$date" +'%Y%m%d')
+            randomNumber=$(shuf -i 1-1000 -n 1)
+            newName="${formattedDate}${randomNumber}-${file##*/}"
+        else
+            newName=$(printf "%04d-%s" $count "${file##*/}")
+            ((count++))
+        fi
+        newFilePath="$(dirname "$file")/$newName"
+        mv "$file" "$newFilePath"
+
+        # 压缩逻辑
+        originalSize=$(du -k "$newFilePath" | cut -f1)
+        squoosh-cli --webp "$newFilePath" -d "$IMAGE_DIR/after"
+        compressedFile="$IMAGE_DIR/after/$(basename "$newFilePath" .jpg).webp"
+        if [ -f "$compressedFile" ]; then
+            compressedSize=$(du -k "$compressedFile" | cut -f1)
+            echo "Original: $newName, Size: ${originalSize}KB; Compressed: $(basename "$compressedFile"), Size: ${compressedSize}KB"
+        else
+            echo "Error: Compressed file not found - $compressedFile"
+        fi
+    fi
+done
+
+echo "Image processing completed."
