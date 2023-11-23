@@ -9,8 +9,7 @@ if [ ! -d "$IMAGE_DIR" ]; then
     exit 1
 fi
 
-# 安装 ImageMagick (如果尚未安装)
-apt-get update && apt-get install -y imagemagick
+
 
 # 重命名图片并压缩
 count=1
