@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <feed xmlns="http://www.w3.org/2005/Atom">
+    <generator uri="https://github.com/waschinski/photo-stream">Photo Stream</generator>
+    <link href="https://maxvoltar.photo/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://maxvoltar.photo" rel="alternate" type="text/html"/>
+    <updated>2023-11-23T12:25:42+00:00</updated>
+    <id>2023-11-23T12:25:42+00:00</id>
+    <title type="html"><![CDATA[maxvoltar.photo]]></title>
+    <subtitle><![CDATA[@maxvoltar's minimalistic, self-hosted photo stream.]]></subtitle>
+    <author>
+      <name><![CDATA[Tim Van Damme]]></name>
+      <email>tim@maxvoltar.be</email>
+      <uri>https://maxvoltar.com</uri>
+    </author>
+    <entry>
+      <title type="html">Image00421</title>
+      <link href="https://maxvoltar.photo/image00421/" rel="alternate" type="text/html" title="Image00421" />
+      <published></published>
+      <updated></updated>
+      <id>https://maxvoltar.photo/image00421/</id>
+      <content type="html"><![CDATA[<figure><a href="https://maxvoltar.photo/image00421/"><img src="https://maxvoltar.photo/best/photos/large/Image00421-686656.webp" alt="Image00421" /></a></figure>
+      ]]>
+    </content>
+    <author>
+      <name><![CDATA[Tim Van Damme]]></name>
+      <email>tim@maxvoltar.be</email>
+      <uri>https://maxvoltar.com</uri>
+    </author>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://maxvoltar.photo/best/photos/large/Image00421-686656.webp" />
+      <media:content medium="image" url="https://maxvoltar.photo/best/photos/large/Image00421-686656.webp" xmlns:media="http://search.yahoo.com/mrss/" />
+      </entry>
+      <entry>
+        <title type="html">001</title>
+        <link href="https://maxvoltar.photo/001/" rel="alternate" type="text/html" title="001" />
+        <published></published>
+        <updated></updated>
+        <id>https://maxvoltar.photo/001/</id>
+        <content type="html"><![CDATA[<figure><a href="https://maxvoltar.photo/001/"><img src="https://maxvoltar.photo/best/photos/large/001-686656.jpg" alt="001" /></a></figure>
+        ]]>
+      </content>
+      <author>
+        <name><![CDATA[Tim Van Damme]]></name>
+        <email>tim@maxvoltar.be</email>
+        <uri>https://maxvoltar.com</uri>
+      </author>
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://maxvoltar.photo/best/photos/large/001-686656.jpg" />
+        <media:content medium="image" url="https://maxvoltar.photo/best/photos/large/001-686656.jpg" xmlns:media="http://search.yahoo.com/mrss/" />
+        </entry>
+      </feed>
