@@ -22,6 +22,11 @@ jobs:
       - name: Process Images
         run: docker run -v ${{ github.workspace }}/images:/images xiquwugou/my-jekyll-image-site:latest /process-images.sh
 
+      - name: Move WebP Images
+        run: |
+          find ${{ github.workspace }}/images -type f -name '*.webp' -exec mv {} ${{ github.workspace }}/app/photos/original \;
+
+
       - name: Build Jekyll Site
         run: docker run -v ${{ github.workspace }}/app:/app xiquwugou/my-jekyll-image-site:latest /bin/bash -l -c "/build-site.sh"
 
