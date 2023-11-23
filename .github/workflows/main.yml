@@ -39,12 +39,23 @@ jobs:
           name: static-site
           path: app/_site
 
-      # 可选：部署到 GitHub Pages 或其他托管服务
+  deploy-static-html:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      # 下载静态站点文件
+      - name: Download Static Site
+        uses: actions/download-artifact@v2
+        with:
+          name: static-site
+          path: downloaded-site
+
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: app/_site
+          folder: downloaded-site
           clean: true
           single-commit: true
           force: true
