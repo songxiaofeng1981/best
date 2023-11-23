@@ -22,4 +22,7 @@ bundle exec jekyll build
 JEKYLL_SOURCE_DIR=/app
 
 cd $JEKYLL_SOURCE_DIR
-bundle exec jekyll build --destination _site
+bundle exec jekyll build --baseurl $REPO_NAME --destination _site
+
+         
+

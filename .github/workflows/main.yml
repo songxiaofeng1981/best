@@ -26,9 +26,12 @@ jobs:
         run: |
           sudo find ${{ github.workspace }}/images -type f -name '*.webp' -exec mv {} ${{ github.workspace }}/app/photos/original \;
 
+      - name: Set Repo Name
+        id: repo-name
+        run: echo "REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)" >> $GITHUB_ENV     
 
       - name: Build Jekyll Site
-        run: docker run -v ${{ github.workspace }}/app:/app xiquwugou/my-jekyll-image-site:latest /bin/bash -l -c "/build-site.sh"
+        run: docker run -v ${{ github.workspace }}/app:/app -e REPO_NAME=${{ env.REPO_NAME }} xiquwugou/my-jekyll-image-site:latest /bin/bash -l -c "/build-site.sh"
 
       - name: Upload Static Site
         uses: actions/upload-artifact@v2
