@@ -29,16 +29,18 @@ for file in "$IMAGE_DIR"/*.{jpg,jpeg,png}; do
         newFilePath="$(dirname "$file")/$newName"
         mv "$file" "$newFilePath"
 
-        # 压缩逻辑
-        originalSize=$(du -k "$newFilePath" | cut -f1)
-        squoosh-cli --webp "$newFilePath" -d "$IMAGE_DIR/after"
-        compressedFile="$IMAGE_DIR/after/$(basename "$newFilePath" .jpg).webp"
-        if [ -f "$compressedFile" ]; then
-            compressedSize=$(du -k "$compressedFile" | cut -f1)
-            echo "Original: $newName, Size: ${originalSize}KB; Compressed: $(basename "$compressedFile"), Size: ${compressedSize}KB"
-        else
-            echo "Error: Compressed file not found - $compressedFile"
-        fi
+		# 压缩逻辑
+		originalSize=$(du -k "$newFilePath" | cut -f1)
+		# 确保使用正确的命令格式
+		squoosh-cli --webp -d "$IMAGE_DIR/after" -- "$newFilePath"
+		compressedFile="$IMAGE_DIR/after/$(basename "$newFilePath" .jpg).webp"
+		if [ -f "$compressedFile" ]; then
+			compressedSize=$(du -k "$compressedFile" | cut -f1)
+			echo "Original: $newName, Size: ${originalSize}KB; Compressed: $(basename "$compressedFile"), Size: ${compressedSize}KB"
+		else
+			echo "Error: Compressed file not found - $compressedFile"
+		fi
+
     fi
 done
 
