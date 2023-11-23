@@ -23,6 +23,9 @@ ENV PATH="/usr/local/rvm/bin:$PATH"
 # 激活 RVM
 RUN /bin/bash -l -c "source /usr/local/rvm/scripts/rvm"
 
+# 设置默认 shell 为登录 shell
+SHELL ["/bin/bash", "-l", "-c"]
+
 # 安装 Ruby
 # 替换下面的 "3.1.2" 为 Gemfile 中指定的 Ruby 版本
 RUN /bin/bash -l -c "rvm install 3.1.2 && rvm use 3.1.2 --default"

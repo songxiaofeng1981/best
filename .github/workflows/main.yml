@@ -19,7 +19,8 @@ jobs:
         run: docker run -v ${{ github.workspace }}/images:/images my-jekyll-site /process-images.sh
 
       - name: Build Jekyll Site
-        run: docker run -v ${{ github.workspace }}/app:/app my-jekyll-site /build-site.sh
+        run: docker run -v ${{ github.workspace }}/app:/app my-jekyll-site /bin/bash -l -c "/build-site.sh"
+
 
       - name: Upload Static Site
         uses: actions/upload-artifact@v2
